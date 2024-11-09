@@ -1,5 +1,10 @@
-from survall_backend.utils.mock_database import MockDatabase
 from openai_class import OpenAiClass
+from sqlalchemy import create_engine, Column, String, Integer, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.schema import PrimaryKeyConstraint
+
+from utils.sql_database import SQLDatabase
 
 class Survall():
     def __new__(cls):
@@ -8,7 +13,5 @@ class Survall():
         return cls.instance
     
     def setup(self, openai):
-        self.question_list = MockDatabase()
-        self.openai = OpenAiClass(openai)
-
-        self.question_list._inject_mock_data()
+        self.question_list = SQLDatabase()
+        # self.openai = OpenAiClass(openai)

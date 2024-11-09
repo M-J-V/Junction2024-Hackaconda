@@ -1,5 +1,5 @@
 from objects.question import Question
-from survall_backend.objects.answer import Answer
+from objects.answer import Answer
 
 class MockDatabase():
     def __init__(self):
